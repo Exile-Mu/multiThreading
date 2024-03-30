@@ -27,11 +27,11 @@ public class StaticProxyTest {
         }
 
         private void after() {
-            System.out.println("opening game...");
+            System.out.println("shut down game.");
         }
 
         private void before() {
-            System.out.println("shut down game.");
+            System.out.println("opening game...");
         }
     }
 
