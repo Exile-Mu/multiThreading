@@ -4,8 +4,12 @@ import com.mss.utils.PrintHelper;
 
 public class SortPrintTest10 {
 
+    private static final String A = "A";
+    private static final String B = "B";
+    private static final String C = "C";
+
     static class Str {
-        public static String s = "c";
+        public static String s = C;
     }
 
     private static int print(String prev, String cur, int i) {
@@ -13,7 +17,7 @@ public class SortPrintTest10 {
             if (prev.equals(Str.s)) {
                 i++;
                 Str.s = cur;
-                if ("a".equals(Str.s)) {
+                if (A.equals(Str.s)) {
                     System.out.println(PrintHelper.printThreadMark() + "==>" + i);
                 }
                 System.out.println(PrintHelper.printThreadMark() + Str.s);
@@ -31,7 +35,7 @@ public class SortPrintTest10 {
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    PrintHelper.printExceptionMark(e);
                 }
             }
             if (i == 10) {
@@ -41,27 +45,24 @@ public class SortPrintTest10 {
     }
 
     public static void main(String[] args) {
-        Runnable run1 = () -> {
+        Thread t1 = new Thread(() -> {
             for (int i = 0; i < 10; ) {
-                i = print("c", "a", i);
-                wait("c", i);
+                i = print(C, A, i);
+                wait(C, i);
             }
-        };
-        Runnable run2 = () -> {
+        });
+        Thread t2 = new Thread(() -> {
             for (int i = 0; i < 10; ) {
-                i = print("a", "b", i);
-                wait("a", i);
+                i = print(A, B, i);
+                wait(A, i);
             }
-        };
-        Runnable run3 = () -> {
+        });
+        Thread t3 = new Thread(() -> {
             for (int i = 0; i < 10; ) {
-                i = print("b", "c", i);
-                wait("b", i);
+                i = print(B, C, i);
+                wait(B, i);
             }
-        };
-        Thread t1 = new Thread(run1);
-        Thread t2 = new Thread(run2);
-        Thread t3 = new Thread(run3);
+        });
 
         t1.start();
         t2.start();
