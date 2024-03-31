@@ -17,3 +17,5 @@
 8，`SortPrintTest8.java`：使用CyclicBarrier实现
 
 9，`SortPrintTest9.java`：使用BlockingQueue实现
+
+10，`SortPrintTest10.java`：使用自定义对象锁实现 + 轮询
