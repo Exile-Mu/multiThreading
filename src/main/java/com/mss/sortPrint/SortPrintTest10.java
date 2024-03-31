@@ -13,7 +13,8 @@ public class SortPrintTest10 {
             if (prev.equals(Str.s)) {
                 i++;
                 Str.s = cur;
-                System.out.println(PrintHelper.printThreadMark() + Str.s + i);
+                System.out.println("==>" + i);
+                System.out.println(PrintHelper.printThreadMark() + Str.s);
             }
         }
         return i;
