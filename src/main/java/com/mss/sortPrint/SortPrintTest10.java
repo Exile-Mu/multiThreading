@@ -11,9 +11,10 @@ public class SortPrintTest10 {
     private static int print(String prev, String cur, int i) {
         synchronized (Str.class) {
             if (prev.equals(Str.s)) {
+                i++;
                 Str.s = cur;
                 if ("a".equals(Str.s)) {
-                    System.out.println(PrintHelper.printThreadMark() + "==>" + ++i);
+                    System.out.println(PrintHelper.printThreadMark() + "==>" + i);
                 }
                 System.out.println(PrintHelper.printThreadMark() + Str.s);
             }
