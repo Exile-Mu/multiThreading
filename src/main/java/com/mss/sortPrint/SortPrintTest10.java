@@ -12,7 +12,7 @@ public class SortPrintTest10 {
         synchronized (Str.class) {
             if (prev.equals(Str.s)) {
                 Str.s = cur;
-                if ("c".equals(Str.s)) {
+                if ("a".equals(Str.s)) {
                     System.out.println(PrintHelper.printThreadMark() + "==>" + ++i);
                 }
                 System.out.println(PrintHelper.printThreadMark() + Str.s);
